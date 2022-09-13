@@ -1,0 +1,63 @@
+#reverse a linked list
+
+class ListNode:
+    def __init__(self,x):
+        self.val = x
+        self.next = None
+
+input =[1,2,3,4,5]
+
+
+class Solution:
+    def reverseList(self,head):
+        prev = None
+        while head:
+            temp = head
+            head = head.next
+            temp.next = prev
+
+
+#stacks list
+data= []
+data.append(5)
+data.append(6)
+data.pop()
+print(data)
+
+#queue list
+data= []
+data.append(5)
+data.append(6)
+data.pop(0)
+print(data)
+
+#can also use the deque from the collections module
+
+
+#quicksort
+def quicksort(arr, left, right):
+    if left < right:
+        partition_pos = partition(arr, left, right)
+        quicksort(arr, left, partition_pos-1)
+        quicksort(arr, partition_pos+1, right)
+
+def partition(arr, left, right):
+    i = left
+    j = right-1
+    pivot = arr[right]
+
+    while i<j:
+        while i <right and arr[i] < pivot:
+            i += 1
+        while j>left and arr[j] >= pivot:
+            j -= 1
+        if i<j:
+            arr[i], arr[j] = arr[j], arr[i]
+    if arr[i]>pivot:
+        arr[i], arr[right] = arr[right], arr[i]
+    return i
+
+arr= [1,5,3,6,2,7,9,3,24,7,2,5]
+arr= [5,5,5,5,5,5]
+quicksort(arr,0,len(arr)-1)
+print(arr)
